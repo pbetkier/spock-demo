@@ -21,4 +21,12 @@ class Chapter1_BasicFeaturesSpec extends Specification {
         Math.max(1, 3) == 3
     }
 
+    def "should allow asserting that exception was thrown"() {
+        when:
+        Integer.valueOf("not a number")
+
+        then:
+        thrown NumberFormatException
+    }
+
 }
