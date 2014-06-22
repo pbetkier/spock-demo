@@ -12,7 +12,7 @@ class Chapter3_HelpfulFailureMessagesSpec extends Specification {
         1 == 2
     }
 
-    @Ignore
+    @Ignore("unignore to see how it fails")
     def "should provide helpful failure message on string assertion"() {
         expect:
         "hello everyone!" == "hello anyone?"
@@ -22,8 +22,9 @@ class Chapter3_HelpfulFailureMessagesSpec extends Specification {
     def "should provide output of every call in the invocation chain"() {
         given:
         def event = [eventId: 123, meta: [timestamp: 234, source: ["example.com"]]]
+        def key = "timestamp"
 
         expect:
-        event.meta.timestamp == 999
+        event.meta.get(key) == 999
     }
 }
