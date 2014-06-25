@@ -8,4 +8,6 @@ repositories {
 dependencies {
     testCompile group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.3.3'
     testCompile group: 'org.spockframework', name: 'spock-core', version: '0.7-groovy-2.0'
+
+    testCompile group: 'cglib', name: 'cglib-nodep', version: '2.2'
 }
