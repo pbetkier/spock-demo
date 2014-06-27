@@ -7,6 +7,8 @@ public interface DataProvider {
 
     List<String> data();
 
+    List<String> pagedData(Integer page, Integer pageSize);
+
     Integer size();
 
     Date updatedAt();

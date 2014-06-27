@@ -46,6 +46,26 @@ class Chapter6_StubbingSpec extends Specification {
         stubbed.data() == ["A", "B"]
     }
 
+    def "should allow configuring returned value for specific arguments"() {
+        given:
+        def stubbed = Stub(DataProvider)
+        stubbed.pagedData(0, 10) >> ["A", "B"]
+
+        expect:
+        stubbed.pagedData(0, 10) == ["A", "B"]
+        stubbed.pagedData(0, 2) == []
+    }
+
+    def "should allow configuring returned value not caring about an argument value"() {
+        given:
+        def stubbed = Stub(DataProvider)
+        stubbed.pagedData(0, _ as Integer) >> ["A", "B"]
+
+        expect:
+        stubbed.pagedData(0, 10) == ["A", "B"]
+        stubbed.pagedData(0, 2) == ["A", "B"]
+    }
+
     def "should allow configuring subsequent returned values"() {
         given:
         def stubbed = Stub(DataProvider)
