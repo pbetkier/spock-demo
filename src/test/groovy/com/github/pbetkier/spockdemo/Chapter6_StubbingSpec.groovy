@@ -2,6 +2,10 @@ package com.github.pbetkier.spockdemo
 
 import spock.lang.Specification
 
+
+/**
+ * Nice DSL for stubbing your collaborators with minimum effort.
+ */
 class Chapter6_StubbingSpec extends Specification {
 
     def "should allow stubbing easily"() {
@@ -21,7 +25,7 @@ class Chapter6_StubbingSpec extends Specification {
         stubbed.data() == []
     }
 
-    def "stubbed methods should return real instances if returned type has a default constructor"() {
+    def "stubbed methods should return non-proxied instances if returned type has a default constructor"() {
         given:
         def stubbed = Stub(DataProvider)
 
@@ -29,7 +33,7 @@ class Chapter6_StubbingSpec extends Specification {
         stubbed.updatedAt().class == Date
     }
 
-    def "stubbed methods should return further stubs if returned type doesn't have a default constructor (requires cglib)"() {
+    def "stubbed methods should return stubs if returned type doesn't have a default constructor (requires cglib)"() {
         given:
         def stubbed = Stub(DataProvider)
 
@@ -44,6 +48,18 @@ class Chapter6_StubbingSpec extends Specification {
 
         expect:
         stubbed.data() == ["A", "B"]
+    }
+
+    def "should allow configuring responses at creation time"() {
+        given:
+        def stubbed = Stub(DataProvider) {
+            data() >> ["A", "B"]
+            size() >> 1
+        }
+
+        expect:
+        stubbed.data() == ["A", "B"]
+        stubbed.size() == 1
     }
 
     def "should allow configuring returned value for specific arguments"() {
@@ -87,18 +103,6 @@ class Chapter6_StubbingSpec extends Specification {
 
         then:
         thrown UnsupportedOperationException
-    }
-
-    def "should allow configuring responses at creation time"() {
-        given:
-        def stubbed = Stub(DataProvider) {
-            data() >> ["A", "B"]
-            size() >> 1
-        }
-
-        expect:
-        stubbed.data() == ["A", "B"]
-        stubbed.size() == 1
     }
 
 }

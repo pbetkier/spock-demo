@@ -4,6 +4,11 @@ import spock.lang.Shared
 import spock.lang.Specification
 
 
+/**
+ * Use simple conventions to execute some code around your tests.
+ * Reinitialize your variables with each test or share them between
+ * executions. Run the tests and analyze the output.
+ */
 class Chapter4_SetupAndCleanupSpec extends Specification {
 
     def refreshed = new Object()
@@ -12,19 +17,19 @@ class Chapter4_SetupAndCleanupSpec extends Specification {
     def shared = new Object()
 
     def setupSpec() {
-        println "setupSpec called"
+        println "setupSpec called (like @BeforeClass)"
     }
 
     def setup() {
-        println "  setup called"
+        println "  setup called (like @Before)"
     }
 
     def cleanup() {
-        println "  cleanup called"
+        println "  cleanup called (like @After)"
     }
 
     def cleanupSpec() {
-        println "cleanupSpec called"
+        println "cleanupSpec called (like @AfterClass)"
     }
 
     def "some test"() {

@@ -3,6 +3,9 @@ package com.github.pbetkier.spockdemo
 import spock.lang.Specification
 
 
+/**
+ * Exploit groovy goodness to make your tests concise and readable.
+ */
 class Chapter2_GroovyGoodnessSpec extends Specification {
 
     def "should make tests concise with list literals"() {
@@ -33,6 +36,7 @@ class Chapter2_GroovyGoodnessSpec extends Specification {
 
         then:
         names.collect { it.length() } == [4, 7, 3]
+        names*.length() == [4, 7, 3]
         names.max { it.length() } == "William"
         names.every { Character.isUpperCase(it.charAt(0)) }
     }

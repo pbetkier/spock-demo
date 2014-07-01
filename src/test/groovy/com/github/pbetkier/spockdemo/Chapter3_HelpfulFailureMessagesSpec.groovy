@@ -4,6 +4,10 @@ import spock.lang.Ignore
 import spock.lang.Specification
 
 
+/**
+ * Spock offers very helpful failure messages. Unignore the tests and
+ * investigate the failures yourself.
+ */
 class Chapter3_HelpfulFailureMessagesSpec extends Specification {
 
     @Ignore("unignore to see how it fails")

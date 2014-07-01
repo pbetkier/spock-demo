@@ -3,6 +3,9 @@ package com.github.pbetkier.spockdemo
 import spock.lang.Specification
 
 
+/**
+ * A simple specification class showing spock basic features.
+ */
 class Chapter1_BasicFeaturesSpec extends Specification {
 
     def "should allow writing readable, spec-like tests"() {

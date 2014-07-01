@@ -3,6 +3,10 @@ package com.github.pbetkier.spockdemo
 import spock.lang.Specification
 import spock.lang.Unroll
 
+
+/**
+ * Convenient tests parameterization is spock's killer feature.
+ */
 class Chapter5_DataDrivenTestsSpec extends Specification {
 
     def "should allow achieving lightweight tests parameterization"() {

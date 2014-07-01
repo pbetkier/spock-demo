@@ -2,6 +2,10 @@ package com.github.pbetkier.spockdemo
 
 import spock.lang.Specification
 
+
+/**
+ * Nice, yet powerful DSL for mocking your collaborators.
+ */
 class Chapter7_MockingSpec extends Specification {
 
     def "should allow verifying a simple interaction"() {
@@ -58,7 +62,7 @@ class Chapter7_MockingSpec extends Specification {
         1 * mocked.send(*_)
     }
 
-    def "should allow verifying interactions in an extreme way (you shouldn't really need this)"() {
+    def "should allow verifying interactions in an extreme way (you shouldn't usually need this)"() {
         given:
         def mocked = Mock(EmailService)
 
@@ -86,7 +90,7 @@ class Chapter7_MockingSpec extends Specification {
         1 * mocked.send(person, "Bye!")
     }
 
-    def "should allow mixing mocking and stubbing"() {
+    def "should allow mixing mocking and stubbing (you shouldn't usually need this)"() {
         given:
         def mocked = Mock(DataProvider)
 
