@@ -72,6 +72,7 @@ class Chapter7_MockingSpec extends Specification {
         then:
         0 * _  // zero interactions on any mock
         0 * mocked._  // zero interactions on 'mocked' object
+        _ * _._(*_)  // going extreme
     }
 
     def "should allow imposing the order of invocations"() {
