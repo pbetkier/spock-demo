@@ -1,15 +1,17 @@
 apply plugin: 'java'
 apply plugin: 'groovy'
 
+sourceCompatibility = 1.8
+
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testCompile group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.3.3'
+    testCompile group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.4.0'
     testCompile group: 'org.spockframework', name: 'spock-core', version: '0.7-groovy-2.0'
 
     // for more sophisticated stubbing & mocking
-    testCompile group: 'cglib', name: 'cglib-nodep', version: '2.2'
-    testCompile group: 'org.objenesis', name: 'objenesis', version: '1.2'
+    testCompile group: 'cglib', name: 'cglib-nodep', version: '3.1'
+    testCompile group: 'org.objenesis', name: 'objenesis', version: '2.1'
 }
