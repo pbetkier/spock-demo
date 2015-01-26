@@ -2,7 +2,6 @@ package com.github.pbetkier.spockdemo
 
 import spock.lang.Specification
 
-
 /**
  * A simple specification class showing spock basic features.
  */

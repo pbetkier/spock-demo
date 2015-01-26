@@ -1,10 +1,11 @@
 package com.github.pbetkier.spockdemo
 
+import groovy.json.JsonBuilder
+import groovy.json.JsonSlurper
 import spock.lang.Specification
 
-
 /**
- * Exploit groovy goodness to make your tests concise and readable.
+ * Exploit Groovy goodness to make your tests concise and readable.
  */
 class Chapter2_GroovyGoodnessSpec extends Specification {
 
@@ -41,7 +42,30 @@ class Chapter2_GroovyGoodnessSpec extends Specification {
         names.every { Character.isUpperCase(it.charAt(0)) }
     }
 
-    def "should allow exploiting groovy-truth boolean coercion"() {
+    def "should allow creating JSON representations easily"() {
+        given:
+        def builder = new JsonBuilder()
+        builder {
+            person {
+                name "Guillaume"
+                age 33
+            }
+        }
+
+        expect:
+        builder.toString() == '{"person":{"name":"Guillaume","age":33}}'
+    }
+
+    def "should allow reading JSON representations easily"() {
+        given:
+        def result = new JsonSlurper().parseText('{"person":{"name":"Guillaume","age":33}}')
+
+        expect:
+        result.person.name == "Guillaume"
+        result.person.age == 33
+    }
+
+    def "should allow exploiting groovy-truth boolean coercion in assertions"() {
         expect:
         "something"
         !""

@@ -2,7 +2,6 @@ package com.github.pbetkier.spockdemo
 
 import spock.lang.Specification
 
-
 /**
  * Nice, yet powerful DSL for mocking your collaborators.
  */
@@ -43,23 +42,13 @@ class Chapter7_MockingSpec extends Specification {
         mocked.send(person, "Hello!")
         mocked.send(person, "not a bad message")
         mocked.send(person, "# message")
+        mocked.send(person, "whatever")
 
         then:
         1 * mocked.send(_ as Person, "Hello!")
         1 * mocked.send(_, !"bad message")
         1 * mocked.send(!null, { it.startsWith("#") })
-    }
-
-    def "should allow verifying an interaction not caring about its arguments"() {
-        given:
-        def mocked = Mock(EmailService)
-        def person = new Person("Bob")
-
-        when:
-        mocked.send(person, "Hello!")
-
-        then:
-        1 * mocked.send(*_)
+        1 * mocked.send(*_)  // don't care
     }
 
     def "should allow verifying interactions in an extreme way (you shouldn't usually need this)"() {

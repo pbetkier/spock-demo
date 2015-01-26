@@ -3,7 +3,6 @@ package com.github.pbetkier.spockdemo
 import spock.lang.Specification
 import spock.lang.Unroll
 
-
 /**
  * Convenient tests parameterization is spock's killer feature.
  */
@@ -32,6 +31,7 @@ class Chapter5_DataDrivenTestsSpec extends Specification {
         0 | 0 | 0
     }
 
+    @Unroll
     def "should allow for another syntax for tests parameterization"() {
         expect:
         name.size() == size

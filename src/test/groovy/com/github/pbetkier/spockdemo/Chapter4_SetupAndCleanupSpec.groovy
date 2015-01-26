@@ -3,7 +3,6 @@ package com.github.pbetkier.spockdemo
 import spock.lang.Shared
 import spock.lang.Specification
 
-
 /**
  * Use simple conventions to execute some code around your tests.
  * Reinitialize your variables with each test or share them between

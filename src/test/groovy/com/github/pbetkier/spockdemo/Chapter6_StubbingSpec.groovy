@@ -2,7 +2,6 @@ package com.github.pbetkier.spockdemo
 
 import spock.lang.Specification
 
-
 /**
  * Nice DSL for stubbing your collaborators with minimum effort.
  */
@@ -16,16 +15,17 @@ class Chapter6_StubbingSpec extends Specification {
         stubbed instanceof DataProvider
     }
 
-    def "stubbed methods should return nice default values for collections and primitive wrappers"() {
+    def "stubbed class' methods should return nice default values for collections and primitive wrappers"() {
         given:
         def stubbed = Stub(DataProvider)
 
         expect:
         stubbed.size() == 0
         stubbed.data() == []
+        stubbed.id() == ""
     }
 
-    def "stubbed methods should return non-proxied instances if returned type has a default constructor"() {
+    def "stubbed class' methods should return non-proxied instances if returned type has a default constructor"() {
         given:
         def stubbed = Stub(DataProvider)
 
@@ -33,7 +33,7 @@ class Chapter6_StubbingSpec extends Specification {
         stubbed.updatedAt().class == Date
     }
 
-    def "stubbed methods should return stubs if returned type doesn't have a default constructor (requires cglib)"() {
+    def "stubbed class' methods should return stubs if returned type doesn't have a default constructor (requires cglib)"() {
         given:
         def stubbed = Stub(DataProvider)
 
@@ -75,7 +75,7 @@ class Chapter6_StubbingSpec extends Specification {
     def "should allow configuring returned value not caring about an argument value"() {
         given:
         def stubbed = Stub(DataProvider)
-        stubbed.pagedData(0, _ as Integer) >> ["A", "B"]
+        stubbed.pagedData(0, _) >> ["A", "B"]
 
         expect:
         stubbed.pagedData(0, 10) == ["A", "B"]

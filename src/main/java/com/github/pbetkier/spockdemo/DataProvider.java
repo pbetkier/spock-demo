@@ -14,4 +14,6 @@ public interface DataProvider {
     Date updatedAt();
 
     Person responsible();
+
+    String id();
 }
