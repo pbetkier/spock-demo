@@ -53,12 +53,14 @@ class Chapter2_GroovyGoodnessSpec extends Specification {
         }
 
         expect:
-        builder.toString() == '{"person":{"name":"Guillaume","age":33}}'
+        builder.toString() ==
+                '{"person":{"name":"Guillaume","age":33}}'
     }
 
     def "should allow reading JSON representations easily"() {
         given:
-        def result = new JsonSlurper().parseText('{"person":{"name":"Guillaume","age":33}}')
+        def result = new JsonSlurper().parseText(
+                '{"person":{"name":"Guillaume","age":33}}')
 
         expect:
         result.person.name == "Guillaume"

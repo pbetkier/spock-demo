@@ -88,7 +88,7 @@ class Chapter7_MockingSpec extends Specification {
         def data = mocked.pagedData(0, 5)
 
         then:
-        data == ["A", "B"]
         1 * mocked.pagedData(0, 5) >> ["A", "B"]
+        data == ["A", "B"]
     }
 }
